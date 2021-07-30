@@ -1,28 +1,22 @@
 /*
-    Question : find first occurance of 1 in infinite binary sorted array.
+    Question :  Search an element in a sorted array of an infinite size.
     
+    How to do ?
     
     As array is sorted,we wil use binary search. But the problem is how to store end as size is inifinite. So we know the target must be in range of start and end.
-    So we will find that range first then find first occurance of 1 in that range only. 
-    
+    So we will find that range first then search in this range only. 
 */
-
 #include<iostream>
 using namespace std;
 
-int FirstOccurance(int *arr ,int start , int end , int num)
+int BinarySearch(int *arr ,int start , int end , int num)
 {
-	int ans = -1;
-	
 	while(start <= end)
 	{
-		mid = start + (end - start)/2 ;
+		int mid = start + (end - start)/2 ;
 		
 		if(arr[mid] == num) 
-		{	
-		    ans = mid ;
-		    end = mid - 1;
-		}
+			return mid ;
 		
 		else if(arr[mid] > num)
 			end = mid - 1 ;
@@ -30,7 +24,7 @@ int FirstOccurance(int *arr ,int start , int end , int num)
 		else
 			start = mid + 1 ;
 	}
-	return ans ;
+	return -1 ;
 }
 
 int searchInfiniteArray(int *arr , int num)
@@ -42,7 +36,6 @@ int searchInfiniteArray(int *arr , int num)
 		start = end ;
 		end *= 2 ;
 	}	
-	
-	return FirstOccurance(arr ,start , end ,num); 
+    
+    return BinarySearch(arr ,start ,end ,num);
 }
-

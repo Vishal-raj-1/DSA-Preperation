@@ -42,7 +42,7 @@ int main()
 	cin>>n;
 	
 	cout<<"Enter the elements in nearly sorted array : "<<endl;
-	int arr[n];
+	int *arr = new int[n];
 	
 	for(int i=0;i<n;i++)
 	cin>>arr[i];
@@ -56,4 +56,7 @@ int main()
 		cout<<"Index of searched element = "<< index;	
 	else
 		cout << "Element is not found.";
+
+	delete [] arr;
+	return 0;
 }

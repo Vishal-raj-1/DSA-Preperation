@@ -13,7 +13,7 @@ using namespace std;
 
 int CeilValue(int *arr , int n , int num)
 {
-	int start = 0 , end = n - 1 , mid , result;
+	int start = 0 , end = n - 1 , mid , result = -1;
 	
 	while(start <= end)
 	{
@@ -41,13 +41,18 @@ int main()
 	cin>>n;
 	
 	cout<<"Enter the elements of sorted array : "<<endl;
-	int arr[n];
+	int *arr = new int[n];
 	
 	for(int i=0;i<n;i++)
 	cin>>arr[i];
 	
 	cout<<"Enter the element whose ceil value is to be find : "<<endl;
 	cin>>num;
-	
-	cout<<"Ceil value of searched element = "<< CeilValue(arr , n , num);	
+	int ceil = CeilValue(arr , n , num);
+	if(ceil != -1)
+		cout<<"Ceil value of searched element = "<< ceil;
+	else
+		cout << "Ceil Value doesn't exist.";	
+	delete [] arr;
+	return 0;
 }

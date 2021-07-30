@@ -4,8 +4,8 @@
 	
 	How to do ?
 	
-	Given array is sorted, so we can use binary search . Now in binary search , as  we find an element we return that index but now we will store that index in temporary answer.
-	and check in the left side for finding its first occurance and for last occurance we will check in right side.
+	Given array is sorted, so we can use binary search. Now in binary search, as  we find an element we return that index 
+	but now we will store that index in temporary answer. and check in the left side for finding its first occurance and for last occurance we will check in right side.
 	
 	**********************************************************************************************************************************************
 	
@@ -17,6 +17,7 @@
 */
 
 #include<iostream>
+#include<algorithm>
 using namespace std;
 
 
@@ -41,6 +42,13 @@ int FirstOccurance(int *arr , int n ,int num)
 		    end = mid -1;
 	}
 	return ans;
+
+	// solution 2: Using STL
+	// int ans = lower_bound(arr, arr+n, num) - arr;
+	// if(ans < n && arr[ans] == num)
+	// 	return ans;
+	// else 
+	// 	return -1;
 }
 
 int LastOccurance(int *arr , int n ,int num)
@@ -64,6 +72,14 @@ int LastOccurance(int *arr , int n ,int num)
 		    end = mid -1;
 	}
 	return ans;
+
+	// solution 2: Using STL
+	// int ans = upper_bound(arr, arr+n, num) - arr;
+	// ans--;
+	// if(ans >= 0 && arr[ans] == num)
+	// 	return ans;
+	// else 
+	// 	return -1;
 }
 
 int main()
@@ -71,7 +87,7 @@ int main()
 	int n , num;
 	cout<<"Enter size of the array : "<<endl;
 	cin>>n;
-	int arr[n];
+	int *arr = new int[n];
 	
 	for(int i=0;i<n;i++)
 	cin>>arr[i];
@@ -91,4 +107,6 @@ int main()
 	else
 		cout << "Target is not found.";
 	
+	delete [] arr;
+	return 0;	
 }
