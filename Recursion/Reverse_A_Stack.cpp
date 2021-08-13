@@ -6,9 +6,9 @@ Approach:-
 2. Otherwise pop the top element until it empty and one by one push back the popped elements using insert fxn.
 */
 
-void insert(stack<int>& s,int val)
+void insert(stack<int> &s, int val)
 {
-    if(s.empty())
+    if (s.empty())
     {
         s.push(val);
         return;
@@ -17,20 +17,20 @@ void insert(stack<int>& s,int val)
     int temp = s.top();
     s.pop();
 
-    insert(s,val);
+    insert(s, val);
 
     s.push(temp);
 }
 
-void reverseStack(stack<int>& s)
+void reverseStack(stack<int> &s)
 {
-    if(s.size() == 1)
+    if (s.size() == 1)
         return;
-    
+
     int temp = s.top();
     s.pop();
-    
+
     reverseStack(s);
-    
-    insert(s,temp);
+
+    insert(s, temp);
 }

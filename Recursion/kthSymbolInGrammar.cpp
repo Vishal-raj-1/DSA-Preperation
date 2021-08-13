@@ -21,15 +21,15 @@ are complement of the elements of 3rd row.
 3. So , if k lies in left of mid then we will recursively call solve fxn with n-1 & k otherwise if it lies in right of middle the we will call solve fxn with n-1 & k-mid.
 */
 
-int kthSymbolInGrammar(int n,int k)
+int kthSymbolInGrammar(int n, int k)
 {
-    if(n == 1 && k == 1)
+    if (n == 1 && k == 1)
         return 0;
-        
-    int mid = 1 << (n-2); // which is 2^(n-1)/2 == 2^(n-2)
-    
-    if(k <= mid)
-        return kthSymbolInGrammar(n-1,k);
+
+    int mid = 1 << (n - 2); // which is 2^(n-1)/2 == 2^(n-2)
+
+    if (k <= mid)
+        return kthSymbolInGrammar(n - 1, k);
     else
-        return !kthSymbolInGrammar(n-1,k-mid);
+        return !kthSymbolInGrammar(n - 1, k - mid);
 }

@@ -5,9 +5,9 @@
 
 Approach:-
 1. Base case:- Whenever input string gets empty we get a permutaion in output string.
-2. Now , we will have two outputs when the character is alphabet based on our decisions (either add an uppercase character or lowercase character in output).
+2. Now, we will have two outputs when the character is alphabet based on our decisions (either add an uppercase character or lowercase character in output).
 3. But in case of numerals we will have only one output.
-3. Now , we have to recursively call the fxn with output1 and output2 in case of alphabet and with single output in case of numerals.
+3. Now, we have to recursively call the fxn with output1 and output2 in case of alphabet and with single output in case of numerals.
 */
 
 #include<iostream>

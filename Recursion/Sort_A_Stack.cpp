@@ -9,31 +9,31 @@ in the stack then push the element .
 4. Otherwise, pop an element from stack and again check the condition through recursive call and atlast push the element back.
 */
 
-void insert(stack<int>& s,int val)
+void insert(stack<int> &s, int val)
 {
-    if(s.empty() || s.top() <= val)
+    if (s.empty() || s.top() <= val)
     {
         s.push(val);
         return;
     }
-    
+
     int temp = s.top();
     s.pop();
-    
-    insert(s,val);
-    
+
+    insert(s, val);
+
     s.push(temp);
 }
 
-void sort(stack<int> & s)
+void sort(stack<int> &s)
 {
-    if(s.size() == 1)
+    if (s.size() == 1)
         return;
-        
+
     int val = s.top();
     s.pop();
-    
+
     sort(s);
-    
-    insert(s,val);
+
+    insert(s, val);
 }

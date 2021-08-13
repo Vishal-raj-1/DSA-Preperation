@@ -24,7 +24,7 @@ stack<int> deleteMiddleElement(stack<int>s)
     return s;
 }
 
-void solve(stack<int>& s,int k)
+void solve(stack<int> &s,int k)
 {
     //if middle element of the stack is at the top of the stack
     if(k == 1)
