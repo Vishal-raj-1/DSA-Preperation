@@ -17,47 +17,32 @@
     3. if stack.top() is greater than i'th element then pop until above two condition is met.
 
 */
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-void NextSmallerToLeft(int *arr , int n)
+void NextSmallerToLeft(int *arr, int n)
 {
-    vector<int>v;
-    stack<int>s;
-    for(int i = 0 ; i < n ; i++)
-        {
-        if(s.empty())
-            v.push_back(-1);
-        
-        else if(s.top() < arr[i])
-            v.push_back(s.top());
-        
-        else if(s.top() >= arr[i])
-        {
-            while(!s.empty() && s.top() >= arr[i])
-            {
-                s.pop();
-            }
-            
-            if(s.empty())
-                v.push_back(-1);
-            else
-                v.push_back(s.top());
-        }
+    vector<int> v(n);
+    stack<int> s;
+    for (int i = 0; i < n; i++)
+    {
+        while (!s.empty() && s.top() >= arr[i])
+            s.pop();
+
+        v[i] = s.empty() ? -1 : s.top();
         s.push(arr[i]);
     }
-    
-    for(auto i : v)
-    cout<<i<<" ";
+
+    for (auto i : v)
+        cout << i << " ";
 }
 int main()
 {
     int n;
-    cin>>n;
+    cin >> n;
     int arr[n];
-    for(int i = 0 ; i < n ; i++)
-    cin>>arr[i];
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
 
-    NextSmallerToLeft(arr , n);
-
+    NextSmallerToLeft(arr, n);
 }

@@ -1,12 +1,12 @@
 /* https://leetcode.com/problems/min-stack/
     
-    first check solution 1 of this problem using two stack (https://github.com/urvashi-code1255/INTERVIEW-QUESTIONS/blob/master/Stack/09-Min_Stack_using_Extra_Space.cpp)
+    first check solution 1 of this problem using two stack (https://github.com/Vishal-raj-1/DSA-Preperation/blob/master/Stack/09_Min_Stack_using_Extra_Space.cpp)
     
     Solution 2: using O(1) space
     
     We will use global minimal variable to calculate minimum element.
     Here if we found minimum element so we will update global varible,..but we will not push that element in stack. Rather we will push a flag so that while poping 
-    whenver we saw a flag it means we have to update our global variable.
+    whenever we saw a flag it means we have to update our global variable.
     
     check comment for more info...
     
@@ -31,7 +31,8 @@ class MyStack
   
         int t = s.top(); 
   
-        (t < minEle) ? cout << minEle : cout << t; //Flag will be smaller than our minimum element,so if flag occur at the top..we will print minimum element.
+        //Flag will be smaller than our minimum element,so if flag occur at the top..we will print minimum element.
+        (t < minEle) ? cout << minEle : cout << t; 
     } 
   
     // Remove the top element from MyStack 
@@ -40,7 +41,7 @@ class MyStack
         if (s.empty()) 
             return; 
 
-        if (t < minEle) 
+        if (s.top() < minEle) 
         { 
             minEle = 2*minEle - s.top(); //Here s.top() is a flag that we use while push operation
         } 
