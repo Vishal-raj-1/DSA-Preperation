@@ -75,35 +75,23 @@ or we can add elements , so in insertion we will add that no of elements in our 
 class Solution
 {
 public:
-    int longestPalindromeSubsequence(string s1, string s2, int n, int m)
+    int minInsertions(string str)
     {
-        int DP[n + 1][m + 1];
-
-        for (int i = 0; i <= n; i++)
-            DP[i][0] = 0;
-
-        for (int i = 0; i <= m; i++)
-            DP[0][i] = 0;
-
-        for (int i = 1; i <= n; i++)
-        {
-            for (int j = 1; j <= m; j++)
-            {
-                if (s1[i - 1] == s2[j - 1])
-                    DP[i][j] = 1 + DP[i - 1][j - 1];
+        string rev = str;
+        reverse(rev.begin(), rev.end());
+        
+        int n = str.size();
+        vector<vector<int>>dp(2, vector<int>(n+1));
+        
+        for(int i=1; i<=n; i++){
+            for(int j=1; j<=n; j++){
+                if(str[i-1] == rev[j-1])
+                    dp[i%2][j] = 1 + dp[(i-1)%2][j-1];
                 else
-                    DP[i][j] = max(DP[i - 1][j], DP[i][j - 1]);
+                    dp[i%2][j] = max(dp[(i-1)%2][j], dp[i%2][j-1]);
             }
         }
-        //Minimum Insertion
-        return m - DP[n][m];
-    }
-
-    int minInsertions(string s1)
-    {
-        string s2 = s1;
-        reverse(s2.begin(), s2.end());
-
-        return longestPalindromeSubsequence(s1, s2, s1.size(), s2.size());
+        
+        return n - dp[n%2][n];
     }
 };

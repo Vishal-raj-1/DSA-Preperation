@@ -18,27 +18,22 @@ using these steps we will get length of longest common subsequence and substract
 #include <string>
 using namespace std;
 
-int shortestCommonSupersequence(string X, string Y, int m, int n)
+int shortestCommonSupersequence(string text1, string text2, int n, int m)
 {
-    int DP[m + 1][n + 1];
+    vector<vector<int>> DP(2, vector<int>(m + 1));
 
-    for (int i = 0; i <= m; i++)
-        DP[i][0] = 0;
-
-    for (int i = 0; i <= n; i++)
-        DP[0][i] = 0;
-
-    for (int i = 1; i <= m; i++)
+    for (int i = 1; i <= n; i++)
     {
-        for (int j = 1; j <= n; j++)
+        for (int j = 1; j <= m; j++)
         {
-            if (X[i - 1] == Y[j - 1])
-                DP[i][j] = 1 + DP[i - 1][j - 1];
+            if (text1[i - 1] == text2[j - 1])
+                DP[i % 2][j] = 1 + DP[(i - 1) % 2][j - 1];
             else
-                DP[i][j] = max(DP[i-1][j], DP[i][j-1]);
+                DP[i % 2][j] = max(DP[(i - 1) % 2][j], DP[i % 2][j - 1]);
         }
     }
-    return m + n - DP[m][n];
+
+    return m + n - DP[n % 2][m];
 }
 
 int main()

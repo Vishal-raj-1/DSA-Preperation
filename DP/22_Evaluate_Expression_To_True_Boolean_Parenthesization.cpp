@@ -97,7 +97,7 @@ int Evaluate(string s , int i , int j , bool isTrue)
         int LT = Evaluate(s , i , k-1 , true); 
         int LF = Evaluate(s , i , k-1 , false); 
         int RT = Evaluate(s , k+1 , j , true); 
-        int RF = Evaluate(s , i , k-1 , true);
+        int RF = Evaluate(s , k+1 , j , false);
 
         if(s[k] == '&')
         {
@@ -124,7 +124,7 @@ int Evaluate(string s , int i , int j , bool isTrue)
         }
     }
     //Store the Key
-    return m[temp] = ans;
+    return m[temp] = ans % 1003;
 }
 
 int main()
